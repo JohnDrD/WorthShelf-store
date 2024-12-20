@@ -1,3 +1,6 @@
+import { CostumerDTO } from "../../domain/Internal/costumer/constumerDTO.interface";
+import { DeliveryDTO } from "../../domain/Internal/delivery/deliveryDTO.interface";
+
 export interface TransactionSummary{
     uuid:string;
     total: number
@@ -6,6 +9,6 @@ export interface TransactionSummary{
     productsList: {id:string, amount:number}[];
     status:string
     
-    userInfo?:string;
-    deliveryInfo?:string;
+    userInfo?:CostumerDTO;
+    deliveryInfo?:DeliveryDTO;
 }

@@ -6,6 +6,8 @@ import { LoginController } from "./Http/loginHttp/login.controller";
 import { CostumerDB } from "./repositories/CostumerDynamo.db";
 import { CostumerRepository } from "../domain/costumer.repository";
 import { SharedModule } from "src/context/shared/inf/shared.module";
+import { TransactionPort } from "../domain/Internal/transaction/TransactionPort.interface";
+import { TransactionAdapter } from "./Internal/transaction/transactionadapter.controller";
 
 @Module({
     providers:[
@@ -16,9 +18,13 @@ import { SharedModule } from "src/context/shared/inf/shared.module";
             provide: CostumerRepository,
             useExisting: CostumerDB
         },
+        {
+            provide: TransactionPort,
+            useClass: TransactionAdapter
+        }
     ],
     controllers:[CostumerGetByIdController, LoginController],
-    exports:[CostumerByIdCase],
+    exports:[TransactionPort],
     imports:[SharedModule]
 })
 export class CostumerModule{}
