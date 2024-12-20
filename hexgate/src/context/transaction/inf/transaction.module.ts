@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TransactionUpdateStatusController } from "./Http/updateStatusTransaction/updateStatusTransactioncontroller";
 import { TransactionGetByIdController } from "./Http/getByIdTransaction/getByIdTransactioncontroller";
-import { CreateTransaction } from "../application/createTransactionCase/createTransactionCase"//"../application/createTransaction/createTransaction";
+import { CreateTransaction } from "../application/createTransactionCase/createTransactionCase"
 import { GetByIdCase } from "../application/getByIdCase/getByIdCase";
 import { UpdateStatus } from "../application/updateStatus/updateStatus";
 import { TransactionDB } from "./repositories/DynamoDB/TransactionDynamo.db";
