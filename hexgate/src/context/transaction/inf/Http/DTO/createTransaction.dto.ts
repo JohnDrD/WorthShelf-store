@@ -1,5 +1,5 @@
 export interface TransactionCreateDTO{
     total: number
-    cartId: string;
+    productsList: {id:string, amount:number}[];
     userId:string;
 }

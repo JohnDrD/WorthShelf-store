@@ -1,7 +1,7 @@
 import { HttpStatus, Injectable } from "@nestjs/common";
 import { TransactionRepository } from "../../domain/transaction.repository"
 import { GEENERIC_MSG } from "../../../shared/constants/general.contants"
-import { BaseResponse } from "../../../shared/domain/response.interface";
+import { BaseResponse } from "../../../shared/interfaces/response.interface";
 import { TRANSACTION_MSG } from "../../constants/Transaction.contants"
 
 @Injectable()

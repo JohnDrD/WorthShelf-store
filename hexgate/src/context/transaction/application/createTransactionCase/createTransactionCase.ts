@@ -2,7 +2,7 @@ import { HttpStatus, Injectable } from "@nestjs/common";
 import { TransactionCreateDTO } from "../DTO/transactionCreate.dto";
 import { Transaction } from "../../domain/transaction.entity";
 import { TransactionRepository } from "../../domain/transaction.repository";
-import { BaseResponse } from "../../../shared/domain/response.interface";
+import { BaseResponse } from "../../../shared/interfaces/response.interface";
 import { TRANSACTION_MSG, TRANSACTION_STATES } from "../../constants/Transaction.contants";
 import { GEENERIC_MSG } from "../../../shared/constants/general.contants";
 

@@ -7,13 +7,7 @@ export class DynamoConnection{
         this.connect()
     }
     connect() {
-       const ddb= new dynamoose.aws.ddb.DynamoDB({
-            credentials:{
-                accessKeyId:process.env.AWS_SK,
-                secretAccessKey:process.env.AWS_SK
-            },
-            region: process.env.AWS_TZ
-        })
+       const ddb= new dynamoose.aws.ddb.DynamoDB()
         dynamoose.aws.ddb.set(ddb)
     }
     

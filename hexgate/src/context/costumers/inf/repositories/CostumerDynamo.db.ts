@@ -8,10 +8,10 @@ import { CostumerModel } from "./CostumerDyname.schema";
 export class CostumerDB extends CostumerRepository{
     async getByMail(email: string): Promise<Costumer | null> {
         const data= await CostumerModel.query("email").eq(email).exec();
-        console.log("data: ", data)
-        return 
+
+        return Costumer.create(data[0])
     }
    async getById(id: string): Promise<Costumer | null> {
-      return new Costumer(await CostumerModel.get(id));
+      return Costumer.create(await CostumerModel.get(id));
     }
 }

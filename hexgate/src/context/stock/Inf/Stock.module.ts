@@ -3,7 +3,7 @@ import { StockSerice } from "../application/Stock.service";
 import { StockRepository } from "../domain/stocks.repository";
 import { StockDB } from "./repositories/Dynamo/StockDynamo.db";
 import { StocksController } from "./Http/StockHttp.controller";
-import { DynamoConnection } from "src/context/shared/DynamoDB/inf/DynamoDBConnection.db";
+import { DynamoConnection } from "src/context/shared/inf/DynamoDBConnection.db";
 
 @Module({
 exports:[StockSerice],

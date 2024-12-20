@@ -5,6 +5,9 @@ import { CostumerPrimVal } from "./costumerPrimVal.interface";
 export class Costumer{
     constructor(private attr: CostumerPrimVal){}
     static create(data:CostumerParams){
+        if(data==null){
+            return null
+        }
         return new Costumer({
             ...data,
             uuid:data.uuid??randomUUID(),

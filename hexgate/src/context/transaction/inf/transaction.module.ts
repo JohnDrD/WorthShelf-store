@@ -7,7 +7,9 @@ import { UpdateStatus } from "../application/updateStatus/updateStatus";
 import { TransactionDB } from "./repositories/DynamoDB/TransactionDynamo.db";
 import { TransactionCreateController } from "./Http/createTransaction/createTransaction.controller";
 import { TransactionRepository } from "../domain/transaction.repository"
-import { DynamoConnection } from "src/context/shared/DynamoDB/inf/DynamoDBConnection.db";
+import { DynamoConnection } from "src/context/shared/inf/DynamoDBConnection.db";
+import { SharedModule } from "src/context/shared/inf/shared.module";
+import { DeliveryModule } from "src/context/delivery/inf/delivery.module";
 
 @Module({
     controllers: [TransactionUpdateStatusController, TransactionGetByIdController,TransactionCreateController],
@@ -25,5 +27,6 @@ import { DynamoConnection } from "src/context/shared/DynamoDB/inf/DynamoDBConnec
     exports: [ CreateTransaction,
         GetByIdCase,
         UpdateStatus],
+        imports:[SharedModule, DeliveryModule]
   })
   export class TransactionModule {}
