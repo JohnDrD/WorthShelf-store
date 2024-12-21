@@ -8,7 +8,8 @@ export class TransactionAdapter extends TransactionPort{
         super();
     }
    async getById(id: string): Promise<CostumerDTO> {
-        return (await this.getByIdCase.execute(id)).data.toValue()
+    const data= (await this.getByIdCase.execute(id)).data
+        return data? data.toValue(): null
     }
     
 }

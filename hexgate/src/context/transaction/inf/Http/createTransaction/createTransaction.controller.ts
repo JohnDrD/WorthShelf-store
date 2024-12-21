@@ -3,7 +3,7 @@ import { CreateTransaction } from "../../../application/createTransactionCase/cr
 import { ROUTE } from "../../../constants/Transaction.contants"
 import { TransactionCreateDTO } from "../DTO/createTransaction.dto";
 import { JwtAuthGuard } from "src/context/shared/Guards/jwtGuard.guard";
-//@UseGuards(JwtAuthGuard)
+@UseGuards(JwtAuthGuard)
 @Controller(ROUTE)
 export class TransactionCreateController{
     constructor(private readonly createCase: CreateTransaction){}

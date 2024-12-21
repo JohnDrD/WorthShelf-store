@@ -4,8 +4,8 @@ import { DeliveryRepository } from "../domain/delivery.repository";
 import { DeliveryDB } from "./repositories/DeliveryDynamo.db";
 import { DeliveryCreateCase } from "../application/CreateCase/DeliveryCreateCase";
 import { DeliveryGetByIdCase } from "../application/GetByIdCase/DeliveryGetByIdCase";
-import { TransactionAdapter } from "./Internal/transactionAdapter.controller";
-import { TransactionPort } from "../domain/Internal/transactionPort.interface";
+import { TransactionDAdapter } from "./Internal/transactionAdapter.controller";
+import { TransactionDPort } from "../domain/Internal/transactionPort.interface";
 
 @Module({
     providers:[
@@ -17,11 +17,11 @@ import { TransactionPort } from "../domain/Internal/transactionPort.interface";
             provide: DeliveryRepository,
             useExisting: DeliveryDB
         },
-        { provide: TransactionPort,
-            useClass:TransactionAdapter
+        { provide: TransactionDPort,
+            useClass:TransactionDAdapter
         }
     ],
     controllers:[],
-    exports:[DeliveryGetByIdCase,DeliveryCreateCase,TransactionPort]
+    exports:[DeliveryGetByIdCase,DeliveryCreateCase,TransactionDPort]
 })
 export class DeliveryModule{}

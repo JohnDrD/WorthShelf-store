@@ -42,14 +42,15 @@ export class UpdateStatus {
         );
 
         
-        const costumer= await this.costumerRep.getById(data.uuid);
+        const costumer= await this.costumerRep.getById(data.userId);
 
         responseData.deliveryInfo = delivery;
         responseData.userInfo = costumer;
       }
-
-      await this.transactionRep.updateStatus(data);
-
+      delete data.dateChanged
+      const id= data.uuid
+      delete data.uuid
+      await this.transactionRep.updateStatus(id,data);
       return {
         code: HttpStatus.OK,
         message: TRANSACTION_MSG.TRANSACTION_UPDATED,

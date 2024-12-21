@@ -24,7 +24,7 @@ import { TransactionAdapter } from "./Internal/transaction/transactionadapter.co
         }
     ],
     controllers:[CostumerGetByIdController, LoginController],
-    exports:[TransactionPort],
+    exports:[CostumerByIdCase,TransactionPort],
     imports:[SharedModule]
 })
 export class CostumerModule{}

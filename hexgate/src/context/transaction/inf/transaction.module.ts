@@ -37,6 +37,7 @@ import { CostumerAdapter } from "./Internal/costumer/costumerAdapter.controller"
     exports: [ CreateTransaction,
         GetByIdCase,
         UpdateStatus],
+        
         imports:[SharedModule, DeliveryModule, CostumerModule]
   })
   export class TransactionModule {}

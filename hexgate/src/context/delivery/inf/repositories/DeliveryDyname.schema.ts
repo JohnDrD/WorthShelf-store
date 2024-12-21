@@ -30,4 +30,4 @@ export const DeliverySchema= new dynamoose.Schema({
     dateCreated:Number,
 })
 
-export const DeliveryModel = dynamoose.model<DeliverySchemaType>("WCostumer", DeliverySchema);
+export const DeliveryModel = dynamoose.model<DeliverySchemaType>("WDelivery", DeliverySchema);
