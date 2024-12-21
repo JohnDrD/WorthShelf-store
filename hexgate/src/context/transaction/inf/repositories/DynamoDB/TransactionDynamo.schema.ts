@@ -11,7 +11,7 @@ export class TransactionSchemaType extends Item{
     userId:string;
     deliveryId?:string;
     status:string
-    transactionID?:string
+    transactionID:string
 }
 const productSchema= new dynamoose.Schema({
     id: String,
@@ -29,8 +29,8 @@ export const TransactionSchema= new dynamoose.Schema({
         schema:[productSchema]
     },
     userId:String,
-    deliveryId:{ type:String, default:""},
-    transactionID:{ type:String, default:""},
+    deliveryId:String,
+    transactionID:String,
     total: Number
 
 },

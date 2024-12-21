@@ -7,5 +7,5 @@ export interface TransactionPrimVal{
     userId:string;
     deliveryId?:string;
     status:string
-    transactionID?:string
+    transactionID:string
 }

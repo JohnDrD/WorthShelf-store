@@ -1,21 +1,30 @@
 import { Module } from "@nestjs/common";
-import { StockSerice } from "../application/Stock.service";
 import { StockRepository } from "../domain/stocks.repository";
 import { StockDB } from "./repositories/Dynamo/StockDynamo.db";
-import { StocksController } from "./Http/StockHttp.controller";
-import { DynamoConnection } from "src/context/shared/inf/DynamoDBConnection.db";
+import { GetStocksCase } from "../application/getStocks/GetStocksCase";
+import { GetStockByIdCase } from "../application/getById/stockGetByIdCase";
+import { UpdateStocks } from "../application/updateStocks/updateStocks";
+import { GetStockByIdController } from "./Http/GetByIdStock/getByIdStock.controller";
+import { GetStocksController } from "./Http/GetStocks/getStocks.controller";
+import { TransactionSPort } from "../domain/Internal/TransactionPort.interface";
+import { TransactionAdapter } from "./Internal/transactionAdapter.controller";
+import { SharedModule } from "src/context/shared/inf/shared.module";
 
 @Module({
-exports:[StockSerice],
-controllers:[StocksController],
+exports:[GetStocksCase, GetStockByIdCase,UpdateStocks,TransactionSPort],
+controllers:[GetStockByIdController, GetStocksController],
 providers:[
-    StockSerice,
+    GetStocksCase, GetStockByIdCase,UpdateStocks,
     StockDB,
     {
         provide: StockRepository,
         useExisting: StockDB
     },
-    DynamoConnection
-]
+    {
+        provide: TransactionSPort,
+        useClass: TransactionAdapter
+    }
+],
+imports:[SharedModule]
 })
 export class StockModule{}

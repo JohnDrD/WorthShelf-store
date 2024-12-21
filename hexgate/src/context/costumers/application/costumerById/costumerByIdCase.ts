@@ -14,7 +14,6 @@ export class CostumerByIdCase{
             }
             return {code:HttpStatus.NOT_FOUND, message:COSTUMER_MSG.USER_FOUND, data: data}
         } catch (error) {
-            console.log("error: ", error)
              return {code:HttpStatus.BAD_REQUEST, message:GEENERIC_MSG.ERROR}
         }
 

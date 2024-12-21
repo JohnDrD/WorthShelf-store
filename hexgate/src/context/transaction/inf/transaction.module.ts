@@ -1,9 +1,7 @@
 import { Module } from "@nestjs/common";
-import { TransactionUpdateStatusController } from "./Http/updateStatusTransaction/updateStatusTransactioncontroller";
 import { TransactionGetByIdController } from "./Http/getByIdTransaction/getByIdTransactioncontroller";
 import { CreateTransaction } from "../application/createTransactionCase/createTransactionCase"
 import { GetByIdCase } from "../application/getByIdCase/getByIdCase";
-import { UpdateStatus } from "../application/updateStatus/updateStatus";
 import { TransactionDB } from "./repositories/DynamoDB/TransactionDynamo.db";
 import { TransactionCreateController } from "./Http/createTransaction/createTransaction.controller";
 import { TransactionRepository } from "../domain/transaction.repository"
@@ -14,13 +12,15 @@ import { DeliveryAdapter } from "./Internal/delivery/deliveryAdapter.controller"
 import { CostumerModule } from "src/context/costumers/inf/costumer.module";
 import { CostumerPort } from "../domain/Internal/costumer/costumerPort.interface";
 import { CostumerAdapter } from "./Internal/costumer/costumerAdapter.controller";
+import { StockPort } from "../domain/Internal/stock/stockPort.interface";
+import { StockAdapter } from "./Internal/stock/stockAdapter.controller";
+import { StockModule } from "src/context/stock/Inf/Stock.module";
 
 @Module({
-    controllers: [TransactionUpdateStatusController, TransactionGetByIdController,TransactionCreateController],
+    controllers: [ TransactionGetByIdController,TransactionCreateController],
     providers: [
       CreateTransaction,
       GetByIdCase,
-      UpdateStatus,
       TransactionDB,
       {
         provide: TransactionRepository,
@@ -32,12 +32,15 @@ import { CostumerAdapter } from "./Internal/costumer/costumerAdapter.controller"
        {
         provide: CostumerPort,
         useClass: CostumerAdapter
-       }
+       },       {
+        provide: StockPort,
+        useClass: StockAdapter
+       },
+       
     ],
     exports: [ CreateTransaction,
-        GetByIdCase,
-        UpdateStatus],
+        GetByIdCase],
         
-        imports:[SharedModule, DeliveryModule, CostumerModule]
+        imports:[SharedModule, DeliveryModule, CostumerModule, StockModule]
   })
   export class TransactionModule {}

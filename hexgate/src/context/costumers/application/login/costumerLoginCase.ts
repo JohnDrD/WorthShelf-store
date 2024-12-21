@@ -13,7 +13,6 @@ export class CostumerLoginCase{
             if(!costumerData){
                 return {code:HttpStatus.BAD_REQUEST, message:COSTUMER_MSG.INVALID_USER}
             }   
-            console.log(password)
             const validation= await bcrypt.compare(costumerData.getPassword(),password) 
                if(!validation){
                 return {code:HttpStatus.BAD_REQUEST, message:COSTUMER_MSG.INVALID_USER}
@@ -21,7 +20,6 @@ export class CostumerLoginCase{
                const token= this.createToken(email);
              return {code:HttpStatus.OK, message:COSTUMER_MSG.VALID_USER, data:{token:token}}
         } catch (error) {
-            console.log("e", error)
             return {code:HttpStatus.BAD_REQUEST, message:COSTUMER_MSG.INVALID_USER}
         }
     }
