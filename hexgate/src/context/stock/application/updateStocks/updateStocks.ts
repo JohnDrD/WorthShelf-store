@@ -1,12 +1,12 @@
 import { Injectable, HttpStatus } from "@nestjs/common"
-import { GEENERIC_MSG } from "src/context/shared/constants/general.contants"
-import { STOCK_MSG } from "../../constants/stock.constants"
+import { GEENERIC_MSG } from '../../../shared/constants/general.contants'
+import { STOCK_MSG } from "../../constants/stock.contants"
 import { StockRepository } from "../../domain/stocks.repository"
 import { UpdateStockDTO } from "../DTO/updateStock.dto"
 
 @Injectable()
 export class UpdateStocks{
-    constructor(private stockrep: StockRepository){}
+    constructor(readonly stockrep: StockRepository){}
     async execute(stocks: UpdateStockDTO[]){
         try {
             const updates=[]
@@ -19,10 +19,9 @@ export class UpdateStocks{
             stocks.forEach(stock=>{
 
                 if(!invalidStocks){
-
                     const stockData= data.find(item=>item.uuid==stock.id)
                     
-                    if(stockData.stock<stock.amount){
+                    if(!stockData||  stockData.stock<stock.amount){
                         invalidStocks=true
                         return;
                     }

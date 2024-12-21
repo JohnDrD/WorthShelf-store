@@ -17,7 +17,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:clear":"jest --clearCache"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -53,6 +54,17 @@
     "typescript": "^5.1.3"
   },
   "jest": {
+    "modulePathIgnorePatterns":[
+      "\\.interface\\.[jt]s$",  
+      "\\.repository\\.[jt]s$",
+       "\\.entity\\.[jt]s$",
+       "\\.contants\\.[jt]s$",
+       "\\.schema\\.[jt]s$", 
+       "\\.module\\.[jt]s$",
+       "main\\.[jt]s$",
+       "\\.mock\\.[jt]s$",
+       "\\.db\\.[jt]s$"
+    ],
     "moduleFileExtensions": [
       "js",
       "json",

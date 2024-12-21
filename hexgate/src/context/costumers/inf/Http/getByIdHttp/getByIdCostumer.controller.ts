@@ -1,7 +1,7 @@
 import { Controller, Get, Param, UseGuards } from "@nestjs/common";
-import { CostumerByIdCase } from "src/context/costumers/application/costumerById/costumerByIdCase";
-import { ROUTE } from "src/context/costumers/constants/costumers.contants";
-import { JwtAuthGuard } from "src/context/shared/Guards/jwtGuard.guard";
+import { CostumerByIdCase } from '../../../application/costumerById/costumerByIdCase'
+import { ROUTE } from "../../../constants/costumers.contants";
+import { JwtAuthGuard } from '../../../../shared/Guards/jwtGuard.guard'
 @UseGuards(JwtAuthGuard)
 @Controller(ROUTE)
 export class CostumerGetByIdController{

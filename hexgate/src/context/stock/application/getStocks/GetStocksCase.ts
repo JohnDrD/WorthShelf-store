@@ -1,11 +1,11 @@
 import { HttpStatus, Injectable } from "@nestjs/common";
 import { StockRepository } from "../../domain/stocks.repository";
-import { STOCK_MSG } from "../../constants/stock.constants";
-import { GEENERIC_MSG } from "src/context/shared/constants/general.contants";
+import { STOCK_MSG } from "../../constants/stock.contants";
+import { GEENERIC_MSG } from '../../../shared/constants/general.contants'
 
 @Injectable()
 export class GetStocksCase{
-    constructor(private stockrep: StockRepository){}
+    constructor(readonly stockrep: StockRepository){}
     async execute(amount:number, lastId?:string){
         try {
             const data= await this.stockrep.getStocks(amount,lastId)

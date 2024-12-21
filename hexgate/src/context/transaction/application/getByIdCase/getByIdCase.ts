@@ -6,7 +6,7 @@ import { TRANSACTION_MSG } from "../../constants/Transaction.contants"
 
 @Injectable()
 export class GetByIdCase{
-    constructor(private readonly transactionRep: TransactionRepository){}
+    constructor( readonly transactionRep: TransactionRepository){}
 
     async run(id:string): Promise<BaseResponse>{
         try {

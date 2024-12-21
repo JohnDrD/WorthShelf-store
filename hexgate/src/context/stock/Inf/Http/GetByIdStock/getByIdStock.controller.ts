@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from "@nestjs/common"
-import { GetStockByIdCase } from "src/context/stock/application/getById/stockGetByIdCase"
-import { ROUTE } from "src/context/stock/constants/stock.constants"
+import { GetStockByIdCase } from '../../../application/getById/stockGetByIdCase'
+import { ROUTE } from '../../../constants/stock.contants'
 
 @Controller(ROUTE)
 export class GetStockByIdController{

@@ -22,6 +22,7 @@ export class CreateTransaction{
         try {
             const updateStocks= await this.stockRep.updateStocks(dto.productsList);
                     if(updateStocks.length==0){
+                        console.log("25")
                         return {code: HttpStatus.BAD_REQUEST, message:GEENERIC_MSG.ERROR}
                     }
             const delivery = await this.deliveryRep.createDelivery(
@@ -41,6 +42,7 @@ export class CreateTransaction{
 
            return {code: HttpStatus.OK, message:TRANSACTION_MSG.CREATED, data:responseData}
         } catch (error) {
+            console.log("error: ", error)
             return {code: HttpStatus.BAD_REQUEST, message:GEENERIC_MSG.ERROR}
         }
     }

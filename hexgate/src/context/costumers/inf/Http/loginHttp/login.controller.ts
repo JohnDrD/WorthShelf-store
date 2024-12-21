@@ -1,10 +1,8 @@
-import { Body, Controller, Param, Post, UseGuards } from "@nestjs/common";
-import { CostumerLoginCase } from "src/context/costumers/application/login/costumerLoginCase";
-import { ROUTE } from "src/context/costumers/constants/costumers.contants";
-import { JwtAuthGuard } from "src/context/shared/Guards/jwtGuard.guard";
+import { Body, Controller, Post, UseGuards } from "@nestjs/common";
+import { CostumerLoginCase } from "../../../application/login/costumerLoginCase";
+import { ROUTE } from "../../../constants/costumers.contants";
 
 @Controller(ROUTE)
-@UseGuards(JwtAuthGuard)
 export class LoginController{
     constructor(private readonly loginCase: CostumerLoginCase){}
     @Post("")

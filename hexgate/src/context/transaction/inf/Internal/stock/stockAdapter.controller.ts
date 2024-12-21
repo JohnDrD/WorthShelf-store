@@ -1,9 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { TransactionSPort } from "src/context/stock/domain/Internal/TransactionPort.interface";
-import { StockDTO } from "src/context/transaction/domain/Internal/stock/stockDTO.interface";
-import { StockPort } from "src/context/transaction/domain/Internal/stock/stockPort.interface";
-import { StockUpdateDTO } from "src/context/transaction/domain/Internal/stock/stockUpdate.interface";
-
+import { TransactionSPort } from '../../../../stock/domain/Internal/TransactionPort.interface'
+import { StockDTO } from '../../../domain/Internal/stock/stockDTO.interface' 
+import { StockPort } from '../../../domain/Internal/stock/stockPort.interface'
+import { StockUpdateDTO } from '../../../domain/Internal/stock/stockUpdate.interface'
 @Injectable()
 export class StockAdapter extends StockPort{
     constructor(private readonly transactionPort: TransactionSPort){

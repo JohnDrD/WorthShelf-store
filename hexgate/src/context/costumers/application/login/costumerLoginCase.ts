@@ -1,6 +1,6 @@
 import { HttpStatus, Injectable } from "@nestjs/common";
 import { CostumerRepository } from "../../domain/costumer.repository";
-import { BaseResponse } from "src/context/shared/interfaces/response.interface";
+import { BaseResponse } from '../../../shared/interfaces/response.interface'
 import { COSTUMER_MSG } from "../../constants/costumers.contants";
 import * as bcrypt from 'bcrypt';
 import {JwtService } from "@nestjs/jwt";

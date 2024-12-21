@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from "@nestjs/common"
-import { BaseResponse } from "src/context/shared/interfaces/response.interface"
-import { GetStocksCase } from "src/context/stock/application/getStocks/GetStocksCase"
-import { ROUTE } from "src/context/stock/constants/stock.constants"
+import { BaseResponse } from '../../../../shared/interfaces/response.interface'
+import { GetStocksCase } from '../../../application/getStocks/GetStocksCase'
+import { ROUTE } from '../../../constants/stock.contants'
 
 @Controller(ROUTE)
 export class GetStocksController{
