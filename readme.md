@@ -3,8 +3,9 @@
 Welcome to the **WorthSelf** project repository! This project powers the WorthSelf e-commerce platform, encompassing both the **Backend** and **Frontend** components. The backend is built with **NestJS** in a **Hexagonal Architecture**, while the frontend will be detailed below. This platform provides essential features to manage product inventory, customer accounts, and transactions.
 - [AWS Application](http://ec2-18-221-165-249.us-east-2.compute.amazonaws.com:3000/)
 - [AWS API Deploy](http://3.141.197.179:3000)
--[Test Coverage](./assets/coverage-summary.png)
-**full report on branch gh-pages**
+- [Test Coverage](./assets/coverage-summary.png)
+- [Test Coverage FE](./assets//coverage-sum-fe.png)
+**full report on branch gh-pages or master for FE**
 
 ## Table of Contents
 - [Modules](#modules)
