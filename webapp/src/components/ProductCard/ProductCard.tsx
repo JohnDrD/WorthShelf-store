@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { ProductCardParams } from "./ProductCard.interface";
 import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { ProductDetails } from "../ProductDetails/productDetails";
-import closeIcon from "/x-solid.svg"
+import closeIcon from '../../../public/x-solid.svg'
 import { setAmountNumber, setProductId, useAppDispatch, useAppSelector } from "../../store/store.config";
 import TransactionModal from "../OrderSummary/OrderSumary";
 import { TransactionSummary } from "../../interfaces/transactionSummary.interfcae";

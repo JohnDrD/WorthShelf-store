@@ -3,8 +3,8 @@ import type { ProductCardParams } from "../ProductCard/ProductCard.interface";
 import { Button, Input } from "@headlessui/react";
 import { setAmountNumber, useAppDispatch, useAppSelector } from "../../store/store.config";
 import LoginModal from "../LogInModal/LoginModal";
-import plusIcon from "/plus-solid.svg";
-import minusIcon from "/minus-solid.svg";
+import plusIcon from '../../../public/plus-solid.svg'
+import minusIcon from "../../../public/minus-solid.svg";
 import DeliveryForm from "../TransactionForm/transactionForm";
 
 export const ProductDetails = ({item, showSummary}:{item: ProductCardParams, showSummary:any}) => {
@@ -22,7 +22,7 @@ export const ProductDetails = ({item, showSummary}:{item: ProductCardParams, sho
   const checkUser= (valid?:boolean)=>{
     setOpenLogin(false)
     setUser(storeItem)
-    if (valid || user.uuid != "") {
+    if (valid || (user&& user.uuid != "")) {
       return setIsLogged(true);
 
     }

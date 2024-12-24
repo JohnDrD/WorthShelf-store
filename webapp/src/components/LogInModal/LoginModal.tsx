@@ -59,7 +59,7 @@ const LoginModal = ({isOpen,onClose}:{isOpen:boolean, onClose:any}) => {
           
           className="rounded bg-sky-600 py-2 px-4 text-md md:text-xl lg:text-lg text-white data-[hover]:bg-sky-500 data-[active]:bg-sky-700 mx-2"
         >
-          Log In
+          Access
         </button>
             <button onClick={onClose} className="rounded bg-gray-600 py-2 px-4 text-md md:text-xl lg:text-lg text-white data-[hover]:bg-gray-500 data-[active]:bg-gray-700 mx-2">
               Cancel

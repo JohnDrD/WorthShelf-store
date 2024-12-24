@@ -62,4 +62,5 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 /webapp/.react-router/
 /webapp/build/
 /webapp/.env
+/webapp/coverage
 nestjs.pem
