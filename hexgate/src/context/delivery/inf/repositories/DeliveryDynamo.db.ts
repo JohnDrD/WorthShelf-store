@@ -3,6 +3,7 @@ import { DeliveryRepository } from "../../domain/delivery.repository";
 import { Delivery } from "../../domain/delivery.entity";
 import { DeliveryCreateParams } from "../../domain/deliveryCreateParams.interface";
 import { DeliveryModel } from "./DeliveryDyname.schema";
+import { randomUUID } from "node:crypto";
 
 
 @Injectable()
@@ -11,7 +12,8 @@ export class DeliveryDB extends DeliveryRepository{
         return Delivery.create(await DeliveryModel.get(id));
     }
    async create(params: DeliveryCreateParams): Promise<Delivery> {
-       const data= await DeliveryModel.create(params);
+    const dataa = randomUUID()
+       const data= await DeliveryModel.create({...params,uuid:dataa});
        return  Delivery.create(data);
     }
 

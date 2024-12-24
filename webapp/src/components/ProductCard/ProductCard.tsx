@@ -4,10 +4,15 @@ import { Button, Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { ProductDetails } from "../ProductDetails/productDetails";
 import closeIcon from "/x-solid.svg"
 import { setAmountNumber, setProductId, useAppDispatch, useAppSelector } from "../../store/store.config";
+import TransactionModal from "../OrderSummary/OrderSumary";
+import { TransactionSummary } from "../../interfaces/transactionSummary.interfcae";
 export const ProductCard = (item: ProductCardParams) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [transactionData, setTData]= useState<TransactionSummary | undefined>(undefined)
+    const [openTrans, setOpenTrans] = useState(false);
     const dispatch = useAppDispatch();
     const storeItem= useAppSelector((state) => state.product.productData);
+   const transaction= useAppSelector((state) => state.transaction.transaction);
 
     useEffect(()=>{
       if(storeItem==item.uuid){
@@ -15,6 +20,14 @@ export const ProductCard = (item: ProductCardParams) => {
         open();
       }
     },[])
+
+    useEffect(()=>{
+      if(openTrans){
+       const data= transaction
+       setTData(data)
+      }
+    },[openTrans])
+
     const open = () => {
       dispatch(setProductId(item.uuid));
       dispatch(setAmountNumber(0))
@@ -25,6 +38,13 @@ export const ProductCard = (item: ProductCardParams) => {
       dispatch(setProductId(""));
       setIsOpen(false);
     };
+
+    const showSummary=(show?:boolean)=>{
+      if(show){
+        setOpenTrans(true)
+      }
+
+    }
 
     return (
       <div className="border border-gray-200 rounded-lg p-1 overflow-hidden hover:border-black duration-200 cursor-pointer" onClick={()=>open()}>
@@ -54,11 +74,12 @@ export const ProductCard = (item: ProductCardParams) => {
               </Button>
             </div>
             </DialogTitle>
-          <ProductDetails uuid={item.uuid} name={item.name} unitValue={item.unitValue}
-           stock={item.stock} 
-           description={item.description} 
-           images={item.images} 
-           dateCreated={item.dateCreated}></ProductDetails>
+          {openTrans? 
+          (<TransactionModal data={transactionData} onClose={()=>{setOpenTrans(false); close()}}></TransactionModal>):
+          (<ProductDetails item={item} showSummary={(show?:boolean)=>{showSummary(show)}} ></ProductDetails>)
+           }
+
+
           </DialogPanel>
         </div>
       </Dialog>

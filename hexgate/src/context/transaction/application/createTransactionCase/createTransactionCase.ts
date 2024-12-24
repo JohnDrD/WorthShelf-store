@@ -22,12 +22,11 @@ export class CreateTransaction{
         try {
             const updateStocks= await this.stockRep.updateStocks(dto.productsList);
                     if(updateStocks.length==0){
-                        console.log("25")
                         return {code: HttpStatus.BAD_REQUEST, message:GEENERIC_MSG.ERROR}
                     }
             const delivery = await this.deliveryRep.createDelivery(
                         dto.deliveryParams,
-                    );        
+                    );    
            const costumer= await this.costumerRep.getById(dto.userId);
 
             const  data= Transaction.create({...dto,deliveryId: delivery.uuid})

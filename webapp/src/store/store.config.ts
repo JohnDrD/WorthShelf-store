@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { persistStore, persistReducer} from 'redux-persist';
 import { default as reduxStorage } from 'redux-persist/lib/storage';
 import { User } from '../interfaces/user.interface';
+import { TransactionSummary } from '../interfaces/transactionSummary.interfcae';
 
 
 const persistConfig = {
@@ -52,11 +53,28 @@ const productSlice = createSlice({
       },
     },
   });
-
+  const transactioSlice = createSlice({
+    name: 'transactionSlice',
+    initialState: {
+        transaction:{
+          uuid: '',
+          total: 0,
+          dateCreated: 0,
+          dateChanged: 0,
+          status: ''
+        }
+    },
+    reducers: {
+      setTrans: (state, action: PayloadAction<TransactionSummary>) => {
+        state.transaction = action.payload;
+      },
+    },
+  });
   const  rootReducers= combineReducers({
     product: productSlice.reducer,
     user:UserSlice.reducer,
-    amount:amountSlice.reducer
+    amount:amountSlice.reducer,
+    transaction: transactioSlice.reducer
   })
 
 const persistedRedu= persistReducer(persistConfig, rootReducers)
@@ -69,6 +87,8 @@ const persistedRedu= persistReducer(persistConfig, rootReducers)
 export const { setProductId } = productSlice.actions;
 export const {setUserData}= UserSlice.actions
 export const {setAmountNumber}= amountSlice.actions
+export const {setTrans}= transactioSlice.actions
+
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export const persistor = persistStore(store);

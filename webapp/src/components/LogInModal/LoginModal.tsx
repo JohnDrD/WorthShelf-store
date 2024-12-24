@@ -11,7 +11,7 @@ const LoginModal = ({isOpen,onClose}:{isOpen:boolean, onClose:any}) => {
       const dispatch = useAppDispatch();
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/costumer', { email, password });
+      const response = await axios.post('http://3.141.197.179:3000/costumer', { email, password });
       console.log('Login successful:', response.data);
       dispatch(setUserData({...response.data.data.user, token: response.data.data.token }))
       onClose(true);

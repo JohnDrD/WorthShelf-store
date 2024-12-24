@@ -6,9 +6,8 @@ import LoginModal from "../LogInModal/LoginModal";
 import plusIcon from "/plus-solid.svg";
 import minusIcon from "/minus-solid.svg";
 import DeliveryForm from "../TransactionForm/transactionForm";
-import TransactionModal from "../OrderSummary/OrderSumary";
 
-export const ProductDetails = (item: ProductCardParams) => {
+export const ProductDetails = ({item, showSummary}:{item: ProductCardParams, showSummary:any}) => {
   const storeItem = useAppSelector((state) => state.user.UserData);
 
   const [mainImage, setMainImage] = useState(item?.images?.[0] || "");
@@ -17,7 +16,9 @@ export const ProductDetails = (item: ProductCardParams) => {
   const [openLogin, setOpenLogin] = useState(false);
   const [openTransaction, setOpenTransaction] = useState(false);
   const [amount, setAmount] = useState(1);
+
   const dispatch = useAppDispatch();
+  
   const checkUser= (valid?:boolean)=>{
     setOpenLogin(false)
     setUser(storeItem)
@@ -58,8 +59,12 @@ export const ProductDetails = (item: ProductCardParams) => {
     setOpenTransaction(true)
   }
 
-  const TransactionSummary=()=>{
-    
+  const TransactionSummary=(data?:any)=>{
+    if(data){
+      showSummary(true)
+    }
+    setOpenLogin(false)
+    setOpenTransaction(false)
   }
   return (
     <>
@@ -157,8 +162,7 @@ export const ProductDetails = (item: ProductCardParams) => {
           checkUser(valid);
         }}
       ></LoginModal>
-      <DeliveryForm isOpen={openTransaction} onClose={()=>{setOpenTransaction(false)}}></DeliveryForm>
-      <TransactionModal data={undefined} isOpen={false} onClose={undefined}></TransactionModal>
+      <DeliveryForm isOpen={openTransaction} onClose={(data:any)=>{TransactionSummary(data)}}></DeliveryForm>
     </>
   );
 };

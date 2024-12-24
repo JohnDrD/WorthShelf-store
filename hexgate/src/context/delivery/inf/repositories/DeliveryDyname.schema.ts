@@ -21,7 +21,7 @@ export const DeliverySchema= new dynamoose.Schema({
         default: randomUUID()
     },
     postCode:String,
-    transactionId:{type:String, index:true},
+    transactionId:String,
     country:String,
     address:String,
     status:String,

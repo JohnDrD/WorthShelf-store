@@ -8,7 +8,7 @@ import axios from "axios"
 export function ListProducts(){
     const [products, setProducts]= useState<ProductCardParams[]>([])
     const  getData= async()=>{
-        axios.get("http://localhost:3000/stocks?amount=10").then(res=>{
+        axios.get("http://3.141.197.179:3000/stocks?amount=10").then(res=>{
             setProducts(res.data.data)
         })
     }
