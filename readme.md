@@ -6,7 +6,7 @@ Welcome to the **WorthSelf** project repository! This project powers the WorthSe
 - [Test Coverage](./assets/coverage-summary.png)
 - [Test Coverage FE](./assets//coverage-sum-fe.png)
 **full report on branch gh-pages or master for FE**
-**test credentials**
+**test credentials**<br/>
   email: doe@mail.com <br/>
   pass: test123  <br/>
   
